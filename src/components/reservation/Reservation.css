@@ -1,0 +1,252 @@
+
+/* Seat Selection Styles */
+.seat-selection-page {
+    padding: 2rem 0;
+}
+
+.seat-selection-page h1 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.show-info-banner {
+    background-color: #8b0000;
+    color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.show-info-banner h2 {
+    margin-bottom: 0.5rem;
+}
+
+.seat-selection-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
+.seat-map {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+}
+
+.screen {
+    background-color: #f1f1f1;
+    color: #333;
+    padding: 0.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.seats-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.seat-row {
+    display: flex;
+    align-items: center;
+}
+
+.row-number {
+    width: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.seat {
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.seat.unavailable {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.seat.selected {
+    background-color: #2196F3;
+}
+
+.seat-legend {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    gap: 2rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.seat-sample {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    margin-right: 8px;
+}
+
+.seat-sample.available {
+    background-color: #4CAF50;
+}
+
+.seat-sample.selected {
+    background-color: #2196F3;
+}
+
+.seat-sample.unavailable {
+    background-color: #ccc;
+}
+
+.reservation-summary {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+}
+
+.selected-seats-list {
+    margin-bottom: 1.5rem;
+}
+
+.selected-seats-list h4 {
+    margin-bottom: 0.5rem;
+}
+
+.selected-seats-list ul {
+    list-style-type: none;
+    padding-left: 0.5rem;
+}
+
+.selected-seats-list li {
+    margin-bottom: 0.3rem;
+}
+
+.price-summary {
+    margin-bottom: 1.5rem;
+}
+
+.price-summary p {
+    margin-bottom: 0.5rem;
+}
+
+.total-price {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    color: #8b0000;
+}
+
+/* Confirmation Page Styles */
+.confirmation-page {
+    padding: 2rem 0;
+    display: flex;
+    justify-content: center;
+}
+
+.confirmation-container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    max-width: 800px;
+    width: 100%;
+}
+
+.confirmation-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.success-icon {
+    width: 60px;
+    height: 60px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 2rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 1rem;
+}
+
+.confirmation-header h1 {
+    color: #4CAF50;
+    margin-bottom: 0.5rem;
+}
+
+.confirmation-details {
+    margin-bottom: 2rem;
+}
+
+.confirmation-details h2 {
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.detail-group {
+    display: flex;
+    margin-bottom: 0.8rem;
+}
+
+.detail-label {
+    font-weight: bold;
+    width: 150px;
+}
+
+.confirmation-actions {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.confirmation-footer {
+    font-size: 0.9rem;
+    color: #666;
+    border-top: 1px solid #eee;
+    padding-top: 1rem;
+}
+
+.confirmation-footer p {
+    margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .seat-selection-container {
+        grid-template-columns: 1fr;
+    }
+
+    .detail-group {
+        flex-direction: column;
+    }
+
+    .detail-label {
+        width: 100%;
+        margin-bottom: 0.3rem;
+    }
+
+    .confirmation-actions {
+        flex-direction: column;
+    }
+}

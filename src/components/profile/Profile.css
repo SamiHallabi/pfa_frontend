@@ -1,0 +1,129 @@
+
+.profile-page {
+    padding: 2rem 0;
+}
+
+.profile-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.profile-container h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.profile-section {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.profile-section h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.profile-info {
+    margin-bottom: 1.5rem;
+}
+
+.info-group {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.info-label {
+    font-weight: bold;
+    width: 150px;
+    margin: 0;
+}
+
+.info-value {
+    margin: 0;
+}
+
+.profile-form {
+    margin-bottom: 1.5rem;
+}
+
+.profile-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.reservations-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.reservation-item {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 1.5rem;
+    background-color: #f9f9f9;
+}
+
+.reservation-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.reservation-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.reservation-code {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.reservation-details {
+    margin-bottom: 1.5rem;
+}
+
+.reservation-details p {
+    margin-bottom: 0.5rem;
+}
+
+.reservation-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+@media (max-width: 768px) {
+    .info-group {
+        flex-direction: column;
+    }
+
+    .info-label {
+        width: 100%;
+        margin-bottom: 0.3rem;
+    }
+
+    .reservation-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .reservation-code {
+        margin-top: 0.5rem;
+    }
+
+    .reservation-actions {
+        flex-direction: column;
+    }
+
+    .reservation-actions button {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+}
