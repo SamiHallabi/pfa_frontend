@@ -42,7 +42,7 @@ const ReservationConfirmation = () => {
     if (!reservation) {
         return <div className="error-message">Reservation not found.</div>;
     }
-
+console.log("reservation ",reservation);
     return (
         <div className="confirmation-page">
             <div className="confirmation-container">
@@ -60,7 +60,7 @@ const ReservationConfirmation = () => {
                     </div>
                     <div className="detail-group">
                         <p className="detail-label">Show:</p>
-                        <p className="detail-value">{reservation.show.title}</p>
+                        <p className="detail-value">{reservation?.show?.title}</p>
                     </div>
                     <div className="detail-group">
                         <p className="detail-label">Date & Time:</p>
