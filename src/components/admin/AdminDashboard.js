@@ -289,7 +289,7 @@ const AdminDashboard = () => {
                                 value={selectedShow ? selectedShow.id : ''}
                                 onChange={(e) => {
                                     const showId = e.target.value;
-                                    const show = shows.find(s => s.id === parseInt(showId));
+                                    const show = shows?.find(s => s.id === parseInt(showId));
                                     setSelectedShow(show || null);
                                 }}
                                 className="form-control"
@@ -297,8 +297,8 @@ const AdminDashboard = () => {
                                 <option value="">Select a show</option>
                                 {
                                     shows?.map(show => (
-                                    <option key={show.id} value={show.id}>
-                                        {show.title} - {new Date(show.date).toLocaleString()}
+                                    <option key={show?.id} value={show?.id}>
+                                        {show?.title} - {new Date(show?.date).toLocaleString()}
                                     </option>
                                 ))}
                             </select>
@@ -313,7 +313,7 @@ const AdminDashboard = () => {
                                             type="number"
                                             id="rows"
                                             name="rows"
-                                            value={seatSetup.rows}
+                                            value={seatSetup?.rows}
                                             onChange={handleSeatSetupChange}
                                             className="form-control"
                                             min="1"
@@ -326,7 +326,7 @@ const AdminDashboard = () => {
                                             type="number"
                                             id="seatsPerRow"
                                             name="seatsPerRow"
-                                            value={seatSetup.seatsPerRow}
+                                            value={seatSetup?.seatsPerRow}
                                             onChange={handleSeatSetupChange}
                                             className="form-control"
                                             min="1"
@@ -395,7 +395,7 @@ const AdminDashboard = () => {
                 <div className="admin-content">
                     <div className="admin-section">
                         <h2>User Management</h2>
-                        {users.length > 0 ? (
+                        {users?.length > 0 ? (
                             <div className="admin-table">
                                 <table>
                                     <thead>
@@ -407,12 +407,12 @@ const AdminDashboard = () => {
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    {users.map(user => (
-                                        <tr key={user.id}>
-                                            <td>{user.username}</td>
-                                            <td>{user.fullName}</td>
-                                            <td>{user.email}</td>
-                                            <td>{user.role}</td>
+                                    {users?.map(user => (
+                                        <tr key={user?.id}>
+                                            <td>{user?.username}</td>
+                                            <td>{user?.fullName}</td>
+                                            <td>{user?.email}</td>
+                                            <td>{user?.role}</td>
                                         </tr>
                                     ))}
                                     </tbody>
@@ -429,7 +429,7 @@ const AdminDashboard = () => {
                 <div className="admin-content">
                     <div className="admin-section">
                         <h2>Reservation Management</h2>
-                        {reservations.length > 0 ? (
+                        {reservations?.length > 0 ? (
                             <div className="admin-table">
                                 <table>
                                     <thead>
@@ -444,15 +444,15 @@ const AdminDashboard = () => {
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    {reservations.map(reservation => (
-                                        <tr key={reservation.id}>
-                                            <td>{reservation.reservationCode}</td>
-                                            <td>{reservation.show.title}</td>
-                                            <td>{reservation.user.fullName}</td>
-                                            <td>{new Date(reservation.reservationDate).toLocaleString()}</td>
-                                            <td>{reservation.seats.length}</td>
-                                            <td>€{reservation.totalPrice.toFixed(2)}</td>
-                                            <td>{reservation.confirmed ? 'Confirmed' : 'Pending'}</td>
+                                    {reservations?.map(reservation => (
+                                        <tr key={reservation?.id}>
+                                            <td>{reservation?.reservationCode}</td>
+                                            <td>{reservation?.show?.title}</td>
+                                            <td>{reservation?.user?.fullName}</td>
+                                            <td>{new Date(reservation?.reservationDate).toLocaleString()}</td>
+                                            <td>{reservation?.seats?.length}</td>
+                                            <td>€{reservation?.totalPrice?.toFixed(2)}</td>
+                                            <td>{reservation?.confirmed ? 'Confirmed' : 'Pending'}</td>
                                         </tr>
                                     ))}
                                     </tbody>
