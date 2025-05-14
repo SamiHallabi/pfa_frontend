@@ -134,7 +134,7 @@ const AdminDashboard = () => {
         if (window.confirm('Are you sure you want to delete this show? This will also delete all associated reservations.')) {
             try {
                 await axios.delete(`http://localhost:8080/api/shows/${id}`);
-                setShows(shows.filter(show => show.id !== id));
+                setShows(shows?.filter(show => show.id !== id));
 
                 if (selectedShow && selectedShow.id === id) {
                     setSelectedShow(null);
@@ -295,7 +295,8 @@ const AdminDashboard = () => {
                                 className="form-control"
                             >
                                 <option value="">Select a show</option>
-                                {shows.map(show => (
+                                {
+                                    shows?.map(show => (
                                     <option key={show.id} value={show.id}>
                                         {show.title} - {new Date(show.date).toLocaleString()}
                                     </option>
@@ -357,12 +358,12 @@ const AdminDashboard = () => {
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    {shows.map(show => (
-                                        <tr key={show.id}>
-                                            <td>{show.title}</td>
-                                            <td>{new Date(show.date).toLocaleString()}</td>
-                                            <td>{show.genre}</td>
-                                            <td>€{show.price.toFixed(2)}</td>
+                                    {shows?.map(show => (
+                                        <tr key={show?.id}>
+                                            <td>{show?.title}</td>
+                                            <td>{new Date(show?.date).toLocaleString()}</td>
+                                            <td>{show?.genre}</td>
+                                            <td>€{show?.price?.toFixed(2)}</td>
                                             <td>
                                                 <button
                                                     onClick={() => setSelectedShow(show)}

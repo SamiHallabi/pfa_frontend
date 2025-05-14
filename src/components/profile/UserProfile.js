@@ -30,7 +30,7 @@ const UserProfile = () => {
             try {
                 const response = await axios.get(`http://localhost:8080/api/reservations/user/${user.id}`);
                 console.log('Updated reservations samii:', response);
-                setReservations(response?.data?.show  || []);
+                setReservations(response?.data  || []);
                 setLoading(false);
             } catch (error) {
                 console.error('Error fetching reservations:', error);
@@ -155,17 +155,17 @@ const UserProfile = () => {
                     <h2>My Reservations</h2>
                     {loading ? (
                         <p>Loading your reservations...</p>
-                    ) : reservations.length > 0 ? (
+                    ) : reservations?.length > 0 ? (
                         <div className="reservations-list">
-                            {reservations.map(reservation => {
-                                const showDate = new Date(reservation.show.date);
-                                const canCancel = showDate.getTime() > Date.now() + (24 * 60 * 60 * 1000); // 24h before show
+                            {reservations?.map(reservation => {
+                                const showDate = new Date(reservation?.show?.date);
+                                const canCancel = showDate?.getTime() > Date.now() + (24 * 60 * 60 * 1000); // 24h before show
 
                                 return (
-                                    <div key={reservation.id} className="reservation-item">
+                                    <div key={reservation?.id} className="reservation-item">
                                         <div className="reservation-header">
-                                            <h3>{reservation.show.title}</h3>
-                                            <span className="reservation-code">Code: {reservation.reservationCode}</span>
+                                            <h3>{reservation?.show?.title}</h3>
+                                            <span className="reservation-code">Code: {reservation?.reservationCode}</span>
                                         </div>
                                         <div className="reservation-details">
                                             <p>
@@ -179,19 +179,19 @@ const UserProfile = () => {
                                             })}
                                             </p>
                                             <p>
-                                                <strong>Seats:</strong> {reservation.seats.map(seat =>
-                                                `Row ${seat.rowNumber}, Seat ${seat.seatNumber}`
+                                                <strong>Seats:</strong> {reservation?.seats?.map(seat =>
+                                                `Row ${seat?.rowNumber}, Seat ${seat?.seatNumber}`
                                             ).join('; ')}
                                             </p>
-                                            <p><strong>Total Price:</strong> €{reservation.totalPrice.toFixed(2)}</p>
+                                            <p><strong>Total Price:</strong> €{reservation?.totalPrice?.toFixed(2)}</p>
                                         </div>
                                         <div className="reservation-actions">
-                                            <button onClick={() => downloadInvoice(reservation.reservationCode)} className="btn">
+                                            <button onClick={() => downloadInvoice(reservation?.reservationCode)} className="btn">
                                                 Download Invoice
                                             </button>
                                             {canCancel && (
                                                 <button
-                                                    onClick={() => handleCancelReservation(reservation.reservationCode)}
+                                                    onClick={() => handleCancelReservation(reservation?.reservationCode)}
                                                     className="btn btn-secondary"
                                                 >
                                                     Cancel Reservation

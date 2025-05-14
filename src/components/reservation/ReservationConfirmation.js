@@ -65,7 +65,7 @@ console.log("reservation ",reservation);
                     <div className="detail-group">
                         <p className="detail-label">Date & Time:</p>
                         <p className="detail-value">
-                            {new Date(reservation.show.date).toLocaleDateString('en-US', {
+                            {new Date(reservation?.show?.date).toLocaleDateString('en-US', {
                                 weekday: 'long',
                                 year: 'numeric',
                                 month: 'long',
@@ -77,17 +77,17 @@ console.log("reservation ",reservation);
                     </div>
                     <div className="detail-group">
                         <p className="detail-label">Number of Seats:</p>
-                        <p className="detail-value">{reservation.seats.length}</p>
+                        <p className="detail-value">{reservation?.seats?.length}</p>
                     </div>
                     <div className="detail-group">
                         <p className="detail-label">Seats:</p>
                         <p className="detail-value">
-                            {reservation.seats.map(seat => `Row ${seat.rowNumber}, Seat ${seat.seatNumber}`).join('; ')}
+                            {reservation?.seats?.map(seat => `Row ${seat.rowNumber}, Seat ${seat.seatNumber}`).join('; ')}
                         </p>
                     </div>
                     <div className="detail-group">
                         <p className="detail-label">Total Price:</p>
-                        <p className="detail-value">€{reservation.totalPrice.toFixed(2)}</p>
+                        <p className="detail-value">€{reservation?.totalPrice?.toFixed(2)}</p>
                     </div>
                 </div>
 
@@ -102,7 +102,7 @@ console.log("reservation ",reservation);
 
                 <div className="confirmation-footer">
                     <p>
-                        A confirmation email has been sent to {reservation.user.email}.
+                        A confirmation email has been sent to {reservation?.user?.email}.
                     </p>
                     <p>
                         You can cancel this reservation up to 24 hours before the show.
