@@ -14,6 +14,7 @@ const AdminDashboard = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
+
     const [showForm, setShowForm] = useState({
         title: '',
         description: '',
@@ -145,6 +146,45 @@ const AdminDashboard = () => {
             }
         }
     };
+    const deleteUser = async (id) => {
+        if (window.confirm('Are you sure you want to delete this user?')) {
+            try {
+                await axios.delete(`http://localhost:8080/api/users/${id}`);
+                setUsers(users?.filter(user => user.id !== id));
+            } catch (error) {
+                console.error('Error deleting user:', error);
+                alert('Failed to delete user.');
+            }
+        }
+    }
+    const deleteReservation = async (id) => {
+        if (window.confirm('Are you sure you want to delete this reservation?')) {
+            try {
+                await axios.delete(`http://localhost:8080/api/reservations/${id}`);
+                setReservations(reservations?.filter(reservation => reservation.id !== id));
+            } catch (error) {
+                console.error('Error deleting reservation:', error);
+                alert('Failed to delete reservation.');
+            }
+        }
+    }
+    const promoteUser = async (id) => {
+        if (window.confirm('Are you sure you want to promote this user to admin?')) {
+            try {
+               await axios.put(`http://localhost:8080/api/users/${id}/promote`);
+                setUsers(users?.map(user => user.id === id ? { ...user, role: 'ADMIN' } : user));
+            } catch (error) {
+                console.error('Error promoting user:', error);
+                alert('Failed to promote user.');
+            }
+        }
+
+    };
+
+
+
+
+
 
     if (!user || user.role !== 'ADMIN') {
         return <Navigate to="/login" />;
@@ -404,6 +444,7 @@ const AdminDashboard = () => {
                                         <th>Full Name</th>
                                         <th>Email</th>
                                         <th>Role</th>
+                                        <th>Actions</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -413,8 +454,27 @@ const AdminDashboard = () => {
                                             <td>{user?.fullName}</td>
                                             <td>{user?.email}</td>
                                             <td>{user?.role}</td>
+                                            <td className="flex gap-2">
+                                                <button
+                                                    onClick={() => deleteUser(user.id)}
+                                                    className="bg-red-600 text-white px-3 py-1 rounded"
+                                                >
+                                                    Delete
+                                                </button>
+
+                                                {user.role !== 'ADMIN' && (
+                                                    <button
+                                                        onClick={() => promoteUser(user.id)}
+                                                        className="bg-blue-600 text-white px-3 py-1 rounded"
+                                                    >
+                                                        Promote To Admin
+                                                    </button>
+                                                )}
+                                            </td>
+
                                         </tr>
                                     ))}
+
                                     </tbody>
                                 </table>
                             </div>
@@ -441,6 +501,7 @@ const AdminDashboard = () => {
                                         <th>Seats</th>
                                         <th>Total</th>
                                         <th>Status</th>
+                                        <th>Actions</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -453,6 +514,10 @@ const AdminDashboard = () => {
                                             <td>{reservation?.seats?.length}</td>
                                             <td>€{reservation?.totalPrice?.toFixed(2)}</td>
                                             <td>{reservation?.confirmed ? 'Confirmed' : 'Pending'}</td>
+                                            <td>
+                                                <button onClick={() => deleteReservation(reservation.id)} className="btn-small btn-danger">
+                                                    Delete
+                                                </button> </td>
                                         </tr>
                                     ))}
                                     </tbody>

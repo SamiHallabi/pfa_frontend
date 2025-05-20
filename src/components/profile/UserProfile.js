@@ -101,7 +101,7 @@ const UserProfile = () => {
                                     type="text"
                                     id="fullName"
                                     name="fullName"
-                                    value={userForm.fullName}
+                                    value={userForm?.fullName}
                                     onChange={handleInputChange}
                                     className="form-control"
                                     required
@@ -113,7 +113,7 @@ const UserProfile = () => {
                                     type="email"
                                     id="email"
                                     name="email"
-                                    value={userForm.email}
+                                    value={userForm?.email}
                                     onChange={handleInputChange}
                                     className="form-control"
                                     required
@@ -130,19 +130,19 @@ const UserProfile = () => {
                         <div className="profile-info">
                             <div className="info-group">
                                 <p className="info-label">Username:</p>
-                                <p className="info-value">{user.username}</p>
+                                <p className="info-value">{user?.username}</p>
                             </div>
                             <div className="info-group">
                                 <p className="info-label">Full Name:</p>
-                                <p className="info-value">{user.fullName}</p>
+                                <p className="info-value">{user?.fullName}</p>
                             </div>
                             <div className="info-group">
                                 <p className="info-label">Email:</p>
-                                <p className="info-value">{user.email}</p>
+                                <p className="info-value">{user?.email}</p>
                             </div>
                             <div className="info-group">
                                 <p className="info-label">Account Type:</p>
-                                <p className="info-value">{user.role}</p>
+                                <p className="info-value">{user?.role}</p>
                             </div>
                             <button onClick={() => setEditMode(true)} className="btn">
                                 Edit Profile
@@ -160,7 +160,7 @@ const UserProfile = () => {
                             {reservations?.map(reservation => {
                                 const showDate = new Date(reservation?.show?.date);
                                 const canCancel = showDate?.getTime() > Date.now() + (24 * 60 * 60 * 1000); // 24h before show
-
+                                console.log(showDate);
                                 return (
                                     <div key={reservation?.id} className="reservation-item">
                                         <div className="reservation-header">
@@ -169,6 +169,7 @@ const UserProfile = () => {
                                         </div>
                                         <div className="reservation-details">
                                             <p>
+
                                                 <strong>Date & Time:</strong> {showDate.toLocaleDateString('en-US', {
                                                 weekday: 'long',
                                                 year: 'numeric',
