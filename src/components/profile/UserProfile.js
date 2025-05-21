@@ -158,9 +158,10 @@ const UserProfile = () => {
                     ) : reservations?.length > 0 ? (
                         <div className="reservations-list">
                             {reservations?.map(reservation => {
-                                const showDate = new Date(reservation?.show?.date);
-                                const canCancel = showDate?.getTime() > Date.now() + (24 * 60 * 60 * 1000); // 24h before show
-                                console.log(showDate);
+                                const showDate = new Date(reservation?.reservationDate);
+                                const now = new Date();
+                                const canCancel = (showDate-now) / (1000 * 60 * 60);
+
                                 return (
                                     <div key={reservation?.id} className="reservation-item">
                                         <div className="reservation-header">
@@ -179,11 +180,11 @@ const UserProfile = () => {
                                                 minute: '2-digit'
                                             })}
                                             </p>
-                                            <p>
-                                                <strong>Seats:</strong> {reservation?.seats?.map(seat =>
-                                                `Row ${seat?.rowNumber}, Seat ${seat?.seatNumber}`
-                                            ).join('; ')}
-                                            </p>
+                                            {/*<p>*/}
+                                            {/*    <strong>Seats:</strong> {reservation?.seats?.map(seat =>*/}
+                                            {/*    `Row ${seat?.rowNumber}, Seat ${seat?.seatNumber}`*/}
+                                            {/*).join('; ')}*/}
+                                            {/*</p>*/}
                                             <p><strong>Total Price:</strong> €{reservation?.totalPrice?.toFixed(2)}</p>
                                         </div>
                                         <div className="reservation-actions">
@@ -191,13 +192,14 @@ const UserProfile = () => {
                                                 Download Invoice
                                             </button>
                                             {canCancel && (
+
                                                 <button
                                                     onClick={() => handleCancelReservation(reservation?.reservationCode)}
                                                     className="btn btn-secondary"
                                                 >
                                                     Cancel Reservation
                                                 </button>
-                                            )}
+                                                )}
                                         </div>
                                     </div>
                                 );
